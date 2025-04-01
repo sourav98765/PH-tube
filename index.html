@@ -1,10 +1,10 @@
-<!DOCTYPE html>
+ <!DOCTYPE html>
 <html lang="en">
 
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>PH-TUBE</title>
+    <title>PH-TUBE</title>  
     <link href="https://cdn.jsdelivr.net/npm/daisyui@5" rel="stylesheet" type="text/css" />
     <script src="https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4"></script>
 </head>
@@ -18,35 +18,12 @@
         </nav>
     </header>
     <nav id="category-contain" class="flex justify-center py-5 gap-5">
-        <button class="btn btn-sm  bg-red-600 text-white">All</button>
+        <button onclick="loadVideo()" class="btn btn-sm  bg-red-600 text-white">All</button>
         
         <script src="./script/index.js"></script>
     </nav>
-    <section class="w-11/12 mx-auto grid grid-cols-4 gap-5" id="video-container">
-        <div class="card bg-base-100  shadow-sm">
-            <figure class="relative">
-              <img
-                src="https://i.ibb.co/QPNzYVy/moonlight.jpg"
-                alt="Shoes" />
-                <span class="absolute bottom-2 right-2 text-white bg-black text-sm rounded">3hrs 56 min ago</span>
-            </figure>
-           
-            <div class="flex gap-3 px-0 py-5">
-             <div class="profile">
-                <div class="avatar">
-                    <div class="ring-primary ring-offset-base-100 w-6 rounded-full ring ring-offset-2">
-                      <img src="https://img.daisyui.com/images/stock/photo-1534528741775-53994a69daeb.webp" />
-                    </div>
-                  </div>
-             </div>
-             <div class="intro">
-                <h2 class="text-sm font-semibold">Midnight Serenade</h2>
-                <p class="text-sm text-gray-600 flex gap-1">Awlad Hossain <img class="size-5" src="https://img.icons8.com/?size=100&id=98A4yZTt9abw&format=png&color=000000" alt=""></p>
-                <p class="text-sm text-gray-600 ">91K views</p>
-             </div>
-              </div>
-            </div>
-          </div>
+<section class="w-11/12 mx-auto grid grid-cols-4 gap-5" id="video-container">
+      
 
     </section>
 </body>
