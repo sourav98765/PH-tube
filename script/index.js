@@ -12,15 +12,21 @@ function loadVideo() {
     .then((response) => response.json())
     .then((data) => displayvideos(data.videos));
 }
-const Loadcategoryvideos = (id) =>{
- 
-  const url =`https://openapi.programming-hero.com/api/phero-tube/category/${id}`;
+const Loadcategoryvideos = (id) => {
+
+  const url = `https://openapi.programming-hero.com/api/phero-tube/category/${id}`;
   console.log(url);
   fetch(url)
-  .then((res) => res.json())
-  //3 send data to display 
-  .then((data) => displayvideos(data.category));
-  
+    .then((res) => res.json())
+    //3 send data to display 
+    .then((data) => {
+     const clickedButton = document.getElementById(`btn-${id}`);
+      // clickedButton.classList.add("active");
+
+      console.log(clickedButton);
+      displayvideos(data.category);
+    });
+
 };
 // {
 //     "category_id": "1001",
@@ -49,7 +55,7 @@ function displayCategories(categories) {
     // create Element 
     const categoriesDiv = document.createElement("div");
     categoriesDiv.innerHTML = `
-     <button onclick="Loadcategoryvideos(${cat.category_id})"   class="btn btn-sm hover:bg-red-600 hover:text-white">${cat.category}</button>`;
+     <button id="${cat.category_id}" onclick="Loadcategoryvideos(${cat.category_id})"   class="btn btn-sm hover:bg-red-600 hover:text-white">${cat.category}</button>`;
     //Append the Element 
     categoriesContainer.append(categoriesDiv);
 
@@ -58,7 +64,18 @@ function displayCategories(categories) {
 }
 const displayvideos = (videos) => {
   const videocontainer = document.getElementById("video-container");
-  videocontainer.innerHTML="";
+  videocontainer.innerHTML = "";
+  if (videos.length == 0) {
+    videocontainer.innerHTML = `  <div class="col-span-full flex flex-col text-center justify-center items-center py-20">
+        <img class="w-[120px]" src=".//assets/Icon.png" alt="">
+        <h2 class="text-2xl font-bold text-center">
+            Oops!! Sorry, There is no content here
+        </h2>
+      </div>`;
+
+
+    return;
+  }
 
   videos.forEach((video) => {
     // console.log(video);\
