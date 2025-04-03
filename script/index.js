@@ -7,8 +7,8 @@ function Loadcategories() {
     .then((data) => displayCategories(data.categories));
 
 }
-function loadVideo() {
-  fetch("https://openapi.programming-hero.com/api/phero-tube/videos")
+function loadVideo(searchText = "") {
+  fetch(`https://openapi.programming-hero.com/api/phero-tube/videos?title=${searchText}`)
     .then((response) => response.json())
     .then((data) => displayvideos(data.videos));
 }
@@ -129,7 +129,11 @@ const displayvideos = (videos) => {
              </div>
              <div class="intro">
                 <h2 class="text-sm font-semibold">Midnight Serenade</h2>
-                <p class="text-sm text-gray-600 flex gap-1"> ${video.authors[0].profile_name} <img class="size-5" src="https://img.icons8.com/?size=100&id=98A4yZTt9abw&format=png&color=000000" alt=""></p>
+                <p class="text-sm text-gray-600 flex gap-1"> ${video.authors[0].profile_name} 
+                 ${video.authors[0].verified == true ? `<img class="size-5" 
+                  src="https://img.icons8.com/?size=100&id=98A4yZTt9abw&format=png&color=000000" alt="">` : ``}
+
+                </p>
                 <p class="text-sm text-gray-600 ">${video.others.views}views</p>
              </div>
               </div>
@@ -144,7 +148,10 @@ const displayvideos = (videos) => {
 };
 
 
-
-
+document.getElementById(`search-input`).addEventListener("keyup",(e) => {
+  const input =e.target.value;
+  loadVideo(input);
+}
+);
 
 Loadcategories();
